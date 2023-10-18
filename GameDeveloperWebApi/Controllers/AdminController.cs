@@ -1,7 +1,7 @@
 ﻿using GameDeveloperBusiness.Abstract;
-using GameDeveloperEntity.Concrete;
 using GameDeveloperEntity.Dto.Admin.Login;
 using GameDeveloperEntity.Dto.Admin.Register;
+using GameDeveloperEntity.Dto.Admin.Update;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GameDeveloperWebApi.Controllers
@@ -33,9 +33,9 @@ namespace GameDeveloperWebApi.Controllers
 
         [HttpPost]
         [Route("update")]
-        public object Update(Admin admin)
+        public object Update(AdminUpdateRequestDto adminUpdateRequestDto)
         {
-            return _adminService.UpdateAdmin(admin);
+            return _adminService.UpdateAdmin(adminUpdateRequestDto);
         }
 
         [HttpGet]

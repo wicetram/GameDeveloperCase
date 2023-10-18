@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using GameDeveloperEntity.Dto.User.Matchmaking;
 
 namespace GameDeveloperBusiness.Abstract
 {
-    internal interface IMatchService
+    public interface IMatchService
     {
+        MatchmakingResponseDto Matchmaking(MatchmakingRequestDto matchmakingRequestDto, string token);
     }
 }

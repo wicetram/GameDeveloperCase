@@ -12,5 +12,6 @@ namespace GameDeveloperDataAccess.Concrete.EntityFramework.Context
 
         public DbSet<Admin>? Admin { get; set; }
         public DbSet<User>? User { get; set; }
+        public DbSet<Queque>? Queque { get; set; }
     }
 }

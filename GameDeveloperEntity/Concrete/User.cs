@@ -7,6 +7,8 @@
         public string? Password { get; set; }
         public int Active { get; set; }
         public int PVP { get; set; }
-        public string? Token { get; set; }
+        public decimal Level { get; set; }
+        public int Rank { get; set; }
+        public decimal PlayTime { get; set; }
     }
 }

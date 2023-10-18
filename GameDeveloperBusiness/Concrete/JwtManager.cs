@@ -1,5 +1,6 @@
 ﻿using GameDeveloperBusiness.Abstract;
 using Microsoft.IdentityModel.Tokens;
+using Newtonsoft.Json;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
@@ -16,20 +17,21 @@ namespace GameDeveloperBusiness.Concrete
         public JwtManager()
         {
             // app.config dosyasından ayarları çekecek şekilde güncelle
-            secretKey = "JwtSecretKey";
-            issuer = "JwtIssuer";
-            audience = "JwtAudience";
-            expirationMinutes = 30;
+            secretKey = "JwtSecretKeyGameDeveloper";
+            issuer = "JwtIssuerGameDeveloper";
+            audience = "JwtAudienceGameDeveloper";
+            expirationMinutes = 10;
         }
 
         public string GenerateToken(T payload)
         {
             var tokenHandler = new JwtSecurityTokenHandler();
             var key = Encoding.ASCII.GetBytes(secretKey);
+            var payloadJson = JsonConvert.SerializeObject(payload);
 
             var claims = new ClaimsIdentity(new[]
             {
-                new Claim(ClaimTypes.Name, payload.ToString()),
+                new Claim(ClaimTypes.Name, payloadJson),
             });
 
             var tokenDescriptor = new SecurityTokenDescriptor
@@ -64,10 +66,15 @@ namespace GameDeveloperBusiness.Concrete
 
                 SecurityToken validatedToken;
                 var claimsPrincipal = tokenHandler.ValidateToken(token, validationParameters, out validatedToken);
+                var payloadJson = claimsPrincipal.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Name)?.Value;
+                if (!string.IsNullOrEmpty(payloadJson))
+                {
+                    payload = JsonConvert.DeserializeObject<T>(payloadJson);
+                    return true;
+                }
 
-                payload = (T)Convert.ChangeType(claimsPrincipal.Identity.Name, typeof(T));
-
-                return true;
+                payload = default(T);
+                return false;
             }
             catch
             {
