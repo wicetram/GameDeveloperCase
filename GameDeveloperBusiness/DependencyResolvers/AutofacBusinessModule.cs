@@ -13,6 +13,7 @@ namespace GameDeveloperBusiness.DependencyResolvers
         {
             builder.RegisterType<UserManager>().As<IUserService>();
             builder.RegisterType<EfUserDal>().As<IUserDal>();
+            builder.RegisterType<EfUserInventoryDal>().As<IUserInventoryDal>();
 
             builder.RegisterType<AdminManager>().As<IAdminService>();
             builder.RegisterType<EfAdminDal>().As<IAdminDal>();

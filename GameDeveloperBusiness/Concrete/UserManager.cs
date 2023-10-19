@@ -4,6 +4,8 @@ using GameDeveloperDataAccess.Abstract;
 using GameDeveloperDataAccess.Concrete.EntityFramework.Context;
 using GameDeveloperEntity.Concrete;
 using GameDeveloperEntity.Dto;
+using GameDeveloperEntity.Dto.User.Inventory.Add;
+using GameDeveloperEntity.Dto.User.Inventory.Get;
 using GameDeveloperEntity.Dto.User.LevelUpdate;
 using GameDeveloperEntity.Dto.User.Login;
 using GameDeveloperEntity.Dto.User.Register;
@@ -265,6 +267,107 @@ namespace GameDeveloperBusiness.Concrete
             catch (Exception ex)
             {
                 return new LevelUpdateResponseDto() { Result = ExceptionHandler(ex), Data = null };
+            }
+        }
+
+        public GetInventoryResponseDto GetUserInventory(GetInventoryRequestDto inventoryRequestDto, string token)
+        {
+            try
+            {
+                if (!VerifyUserWithJwt(token))
+                {
+                    return new GetInventoryResponseDto { Result = ErrorHandler("Token hatası."), Data = null };
+                }
+                else
+                {
+                    using var context = new SimpleContextDb();
+                    var userInventory = context.UserInventory?.Where(ui => ui.UserId == inventoryRequestDto.UserId).ToList();
+
+                    if (userInventory != null && userInventory.Count > 0)
+                    {
+                        var inventoryDataList = userInventory.Select(ui => new GetInventoryResponseData
+                        {
+                            Id = ui.Id,
+                            UserId = ui.UserId,
+                            ItemId = ui.ItemId,
+                            ItemType = ui.ItemType,
+                            ItemName = ui.ItemName,
+                            Description = ui.Description
+                        }).ToList();
+
+                        if (inventoryDataList.Count > 0)
+                        {
+                            return new GetInventoryResponseDto
+                            {
+                                Result = SuccessHandler(),
+                                Data = inventoryDataList
+                            };
+                        }
+                        else
+                        {
+                            return new GetInventoryResponseDto { Result = ErrorHandler("Envanter getirilemedi."), Data = null };
+                        }
+                    }
+                    else
+                    {
+                        return new GetInventoryResponseDto { Result = ErrorHandler("Envanter boş."), Data = null };
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                return new GetInventoryResponseDto { Result = ExceptionHandler(ex), Data = null };
+            }
+        }
+
+        public AddInventoryResponseDto AddInventory(AddInventoryRequestDto addInventoryRequestDto, string token)
+        {
+            try
+            {
+                if (!VerifyUserWithJwt(token))
+                {
+                    return new AddInventoryResponseDto { Result = ErrorHandler("Token hatası."), Data = null };
+                }
+                else
+                {
+                    using var context = new SimpleContextDb();
+                    var newUserInventory = new UserInventory
+                    {
+                        UserId = addInventoryRequestDto.UserId,
+                        ItemId = addInventoryRequestDto.ItemId,
+                        ItemType = addInventoryRequestDto.ItemType,
+                        ItemName = addInventoryRequestDto.ItemName,
+                        Description = addInventoryRequestDto.Description
+                    };
+                    
+                    context.UserInventory?.Add(newUserInventory);
+                    var result = context.SaveChanges();
+
+                    if (result > 0)
+                    {
+                        return new AddInventoryResponseDto
+                        {
+                            Result = SuccessHandler(),
+                            Data = new AddInventoryResponseData
+                            {
+                                Id = newUserInventory.Id,
+                                UserId = newUserInventory.UserId,
+                                ItemId = newUserInventory.ItemId,
+                                ItemType = newUserInventory.ItemType,
+                                ItemName = newUserInventory.ItemName,
+                                Description = newUserInventory.Description
+                            }
+                        };
+                    }
+                    else
+                    {
+                        return new AddInventoryResponseDto { Result = ErrorHandler("Envanter getirilemedi."), Data = null };
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                return new AddInventoryResponseDto { Result = ExceptionHandler(ex), Data = null };
             }
         }
     }

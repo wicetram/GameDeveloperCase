@@ -1,4 +1,6 @@
 ﻿using GameDeveloperBusiness.Abstract;
+using GameDeveloperEntity.Dto.User.Inventory.Add;
+using GameDeveloperEntity.Dto.User.Inventory.Get;
 using GameDeveloperEntity.Dto.User.LevelUpdate;
 using GameDeveloperEntity.Dto.User.Login;
 using GameDeveloperEntity.Dto.User.Register;
@@ -79,6 +81,28 @@ namespace GameDeveloperWebApi.Controllers
         public object Level(LevelUpdateRequestDto levelUpdateRequestDto)
         {
             return _userService.LevelUpdate(levelUpdateRequestDto);
+        }
+
+        [HttpPost]
+        [Route("getInventory")]
+        public object GetInventory(GetInventoryRequestDto getInventoryRequestDto)
+        {
+            if (!string.IsNullOrEmpty(Authentication))
+            {
+                return _userService.GetUserInventory(getInventoryRequestDto, Authentication);
+            }
+            return Unauthorized();
+        }
+
+        [HttpPost]
+        [Route("addInventory")]
+        public object AddInventory(AddInventoryRequestDto addInventoryRequestDto)
+        {
+            if (!string.IsNullOrEmpty(Authentication))
+            {
+                return _userService.AddInventory(addInventoryRequestDto, Authentication);
+            }
+            return Unauthorized();
         }
     }
 }
