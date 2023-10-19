@@ -3,7 +3,7 @@ using GameDeveloperEntity.Concrete;
 
 namespace GameDeveloperDataAccess.Abstract
 {
-    public interface IQuequeDal : IEntityRepository<Queque>
+    public interface IQueueDal : IEntityRepository<Queue>
     {
     }
 }

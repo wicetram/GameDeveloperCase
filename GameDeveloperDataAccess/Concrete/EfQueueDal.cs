@@ -5,7 +5,7 @@ using GameDeveloperEntity.Concrete;
 
 namespace GameDeveloperDataAccess.Concrete
 {
-    public class EfQuequeDal : EfEntityRepositoryBase<Queque, SimpleContextDb>, IQuequeDal
+    public class EfQueueDal : EfEntityRepositoryBase<Queue, SimpleContextDb>, IQueueDal
     {
     }
 }

@@ -1,6 +1,8 @@
-﻿namespace GameDeveloperEntity.Dto.User.LevelUpdate
+﻿using GameDeveloperEntity.Abstract;
+
+namespace GameDeveloperEntity.Dto.User.LevelUpdate
 {
-    public class LevelUpdateRequestDto
+    public class LevelUpdateRequestDto : IDto
     {
         public int Id { get; set; }
         public decimal Level { get; set; }

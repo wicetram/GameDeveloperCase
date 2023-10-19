@@ -16,7 +16,7 @@ namespace GameDeveloperBusiness.Concrete
 
         public JwtManager()
         {
-            // app.config dosyasından ayarları çekecek şekilde güncelle
+            // app.config dosyasından ayarları çekecek şekilde güncellenebilir
             secretKey = "JwtSecretKeyGameDeveloper";
             issuer = "JwtIssuerGameDeveloper";
             audience = "JwtAudienceGameDeveloper";

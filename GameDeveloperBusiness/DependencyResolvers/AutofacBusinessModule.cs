@@ -17,6 +17,9 @@ namespace GameDeveloperBusiness.DependencyResolvers
             builder.RegisterType<AdminManager>().As<IAdminService>();
             builder.RegisterType<EfAdminDal>().As<IAdminDal>();
 
+            builder.RegisterType<MatchManager>().As<IMatchService>();
+            builder.RegisterType<EfQueueDal>().As<IQueueDal>();
+
             builder.Register(c => new JwtManager<User>()).As<IJwtService<User>>();
         }
     }

@@ -1,18 +1,15 @@
 ﻿using GameDeveloperBusiness.Abstract;
-using GameDeveloperEntity.Dto.User.LevelUpdate;
-using GameDeveloperEntity.Dto.User.Login;
-using GameDeveloperEntity.Dto.User.Register;
-using GameDeveloperEntity.Dto.User.Update;
-using Microsoft.AspNetCore.Authorization;
+using GameDeveloperEntity.Dto.Matchmaking.Finish;
+using GameDeveloperEntity.Dto.Matchmaking.Queue;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GameDeveloperWebApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class UserController : ControllerBase
+    public class MatchController : ControllerBase
     {
-        private readonly IUserService _userService;
+        private readonly IMatchService _matchService;
 
         private string Authentication
         {
@@ -41,44 +38,31 @@ namespace GameDeveloperWebApi.Controllers
             }
         }
 
-
-        public UserController(IUserService userService)
+        public MatchController(IMatchService matchService)
         {
-            _userService = userService;
+            _matchService = matchService;
         }
 
         [HttpPost]
-        [Route("register")]
-        [AllowAnonymous]
-        public object Register(RegisterRequestDto registerRequestDto)
-        {
-            return _userService.Register(registerRequestDto);
-        }
-
-        [HttpPost]
-        [Route("login")]
-        [AllowAnonymous]
-        public object Login(LoginRequestDto loginRequestDto)
-        {
-            return _userService.Login(loginRequestDto);
-        }
-
-        [HttpPost]
-        [Route("Update")]
-        public object Update(UpdateRequestDto updateRequestDto)
+        [Route("matchMaking")]
+        public object Matchmaking(QueueRequestDto queueRequestDto)
         {
             if (!string.IsNullOrEmpty(Authentication))
             {
-                return _userService.UpdateUser(updateRequestDto, Authentication);
+                return _matchService.Matchmaking(queueRequestDto, Authentication);
             }
             return Unauthorized();
         }
 
         [HttpPost]
-        [Route("level")]
-        public object Level(LevelUpdateRequestDto levelUpdateRequestDto)
+        [Route("finish")]
+        public object Finish(FinishQueueRequestDto finishQueueRequestDto)
         {
-            return _userService.LevelUpdate(levelUpdateRequestDto);
+            if (!string.IsNullOrEmpty(Authentication))
+            {
+                return _matchService.FinishMatch(finishQueueRequestDto, Authentication);
+            }
+            return Unauthorized();
         }
     }
 }

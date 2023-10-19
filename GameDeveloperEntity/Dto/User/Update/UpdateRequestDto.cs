@@ -1,6 +1,8 @@
-﻿namespace GameDeveloperEntity.Dto.User.Update
+﻿using GameDeveloperEntity.Abstract;
+
+namespace GameDeveloperEntity.Dto.User.Update
 {
-    public class UpdateRequestDto
+    public class UpdateRequestDto : IDto
     {
         public int Id { get; set; }
         public required string Email { get; set; }

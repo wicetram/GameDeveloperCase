@@ -1,6 +1,5 @@
 ﻿using GameDeveloperEntity.Dto.User.LevelUpdate;
 using GameDeveloperEntity.Dto.User.Login;
-using GameDeveloperEntity.Dto.User.Matchmaking;
 using GameDeveloperEntity.Dto.User.Register;
 using GameDeveloperEntity.Dto.User.Update;
 
