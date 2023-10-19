@@ -1,0 +1,447 @@
+{
+	"info": {
+		"_postman_id": "8a82a6c8-0e04-4431-86bf-0722edb6d4ef",
+		"name": "GameDeveloperCase",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29900493"
+	},
+	"item": [
+		{
+			"name": "Admin",
+			"item": [
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"ozeruzunkaya@mail.com\",\r\n  \"password\": \"1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7289/api/admin/register",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7289",
+							"path": [
+								"api",
+								"admin",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"ozeruzunkaya@mail.com\",\r\n  \"password\": \"1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7289/api/admin/login",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7289",
+							"path": [
+								"api",
+								"admin",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\": 1,\r\n  \"email\": \"ozeruzunkaya12@gmail.com\",\r\n  \"password\": \"123456\",\r\n  \"active\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7289/api/admin/update",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7289",
+							"path": [
+								"api",
+								"admin",
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetAdmins",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7289/api/admin/getadmins",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7289",
+							"path": [
+								"api",
+								"admin",
+								"getadmins"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetUsers",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7289/api/admin/getusers",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7289",
+							"path": [
+								"api",
+								"admin",
+								"getusers"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"ozeruzunkaya@gmail.com\",\r\n  \"password\": \"123456\",\r\n  \"pvp\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7289/api/user/register",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7289",
+							"path": [
+								"api",
+								"user",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"ozeruzunkaya@gmail.com\",\r\n    \"password\": \"12\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7289/api/user/login",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7289",
+							"path": [
+								"api",
+								"user",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6IntcIklkXCI6MSxcIkVtYWlsXCI6XCJvemVydXp1bmtheWFAZ21haWwuY29tXCIsXCJQYXNzd29yZFwiOlwiMTIzNDU2XCIsXCJBY3RpdmVcIjoxLFwiUFZQXCI6MX0iLCJuYmYiOjE2OTc2NTgxOTAsImV4cCI6MTY5NzY1OTk5MCwiaWF0IjoxNjk3NjU4MTkwLCJpc3MiOiJKd3RJc3N1ZXJHYW1lRGV2ZWxvcGVyIiwiYXVkIjoiSnd0QXVkaWVuY2VHYW1lRGV2ZWxvcGVyIn0.8OnpVxvoyEDrhpvRA-IV8jSy3ZqDGmkNqitr-E-ltIA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\": 1,\r\n  \"email\": \"ozeruzunkaya@gmail.com\",\r\n  \"password\": \"12\",\r\n  \"active\": true,\r\n  \"pvp\": false\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7289/api/user/update",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7289",
+							"path": [
+								"api",
+								"user",
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Level",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\": 1,\r\n  \"level\": 10\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7289/api/user/level",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7289",
+							"path": [
+								"api",
+								"user",
+								"level"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetInventory",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6IntcIklkXCI6MSxcIkVtYWlsXCI6XCJvemVydXp1bmtheWFAZ21haWwuY29tXCIsXCJQYXNzd29yZFwiOlwiMTJcIixcIkFjdGl2ZVwiOjEsXCJQVlBcIjoxLFwiTGV2ZWxcIjoxMS4yMCxcIlJhbmtcIjoyLFwiUGxheVRpbWVcIjoxMC4yMH0iLCJuYmYiOjE2OTc3NDYzNjIsImV4cCI6MTY5Nzc0Njk2MiwiaWF0IjoxNjk3NzQ2MzYyLCJpc3MiOiJKd3RJc3N1ZXJHYW1lRGV2ZWxvcGVyIiwiYXVkIjoiSnd0QXVkaWVuY2VHYW1lRGV2ZWxvcGVyIn0.o4i_5plJewkmIv0B0RNnh6hg3aIN_fzxcaUu5C-OV-U",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"userId\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7289/api/user/getInventory",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7289",
+							"path": [
+								"api",
+								"user",
+								"getInventory"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "AddInventory",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6IntcIklkXCI6MSxcIkVtYWlsXCI6XCJvemVydXp1bmtheWFAZ21haWwuY29tXCIsXCJQYXNzd29yZFwiOlwiMTJcIixcIkFjdGl2ZVwiOjEsXCJQVlBcIjoxLFwiTGV2ZWxcIjoxMS4yMCxcIlJhbmtcIjoyLFwiUGxheVRpbWVcIjoxMC4yMH0iLCJuYmYiOjE2OTc3NDYzNjIsImV4cCI6MTY5Nzc0Njk2MiwiaWF0IjoxNjk3NzQ2MzYyLCJpc3MiOiJKd3RJc3N1ZXJHYW1lRGV2ZWxvcGVyIiwiYXVkIjoiSnd0QXVkaWVuY2VHYW1lRGV2ZWxvcGVyIn0.o4i_5plJewkmIv0B0RNnh6hg3aIN_fzxcaUu5C-OV-U",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"userId\": 1,\r\n  \"itemId\": 1,\r\n  \"itemType\": \"Test\",\r\n  \"itemName\": \"Test\",\r\n  \"description\": \"Test\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7289/api/user/addInventory",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7289",
+							"path": [
+								"api",
+								"user",
+								"addInventory"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Match",
+			"item": [
+				{
+					"name": "MatchMaking",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6IntcIklkXCI6MSxcIkVtYWlsXCI6XCJvemVydXp1bmtheWFAZ21haWwuY29tXCIsXCJQYXNzd29yZFwiOlwiMTJcIixcIkFjdGl2ZVwiOjEsXCJQVlBcIjoxLFwiTGV2ZWxcIjoxMC4wMCxcIlJhbmtcIjoxLFwiUGxheVRpbWVcIjoxMC4yMH0iLCJuYmYiOjE2OTc3NDMyNTEsImV4cCI6MTY5Nzc0Mzg1MSwiaWF0IjoxNjk3NzQzMjUxLCJpc3MiOiJKd3RJc3N1ZXJHYW1lRGV2ZWxvcGVyIiwiYXVkIjoiSnd0QXVkaWVuY2VHYW1lRGV2ZWxvcGVyIn0.J8WNsaeamqmokbCIebdEhpt5HeylGm688YpubgKzKrY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7289/api/match/matchmaking",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7289",
+							"path": [
+								"api",
+								"match",
+								"matchmaking"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Finish",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6IntcIklkXCI6MSxcIkVtYWlsXCI6XCJvemVydXp1bmtheWFAZ21haWwuY29tXCIsXCJQYXNzd29yZFwiOlwiMTJcIixcIkFjdGl2ZVwiOjEsXCJQVlBcIjoxLFwiTGV2ZWxcIjoxMC4wMCxcIlJhbmtcIjoxLFwiUGxheVRpbWVcIjoxMC4yMH0iLCJuYmYiOjE2OTc3NDMyNTEsImV4cCI6MTY5Nzc0Mzg1MSwiaWF0IjoxNjk3NzQzMjUxLCJpc3MiOiJKd3RJc3N1ZXJHYW1lRGV2ZWxvcGVyIiwiYXVkIjoiSnd0QXVkaWVuY2VHYW1lRGV2ZWxvcGVyIn0.J8WNsaeamqmokbCIebdEhpt5HeylGm688YpubgKzKrY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"winnerId\": 1,\r\n  \"gainedRank\": 1,\r\n  \"gainedLevel\": 1.2\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7289/api/match/finish",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7289",
+							"path": [
+								"api",
+								"match",
+								"finish"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
